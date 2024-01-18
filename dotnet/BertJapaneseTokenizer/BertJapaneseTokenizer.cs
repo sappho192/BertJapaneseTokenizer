@@ -118,6 +118,16 @@ namespace BertJapaneseTokenizer
             return results.ToArray();
         }
 
+        /// <summary>
+        /// <para>Performs wordpiece tokenization. 
+        /// Original code is from Transformers.models.bert_japanese.tokenization_bert_japanese.py
+        /// </para>
+        /// <para>
+        /// See https://github.com/huggingface/transformers/blob/a7cab3c283312b8d4de5df3bbe719971e24f4281/src/transformers/models/bert_japanese/tokenization_bert_japanese.py#L902-L948
+        /// </para>
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         private List<string> WordPieceTokenize(string text)
         {
             List<string> outputTokens = [];
@@ -133,14 +143,14 @@ namespace BertJapaneseTokenizer
 
                 bool isBad = false;
                 int start = 0;
-                List<string> subTokens = new List<string>();
+                List<string> subTokens = [];
                 while (start < chars.Length)
                 {
                     int end = chars.Length;
                     string curSubstr = null;
                     while (start < end)
                     {
-                        string substr = new string(chars, start, end - start);
+                        string substr = new(chars, start, end - start);
                         if (start > 0)
                         {
                             substr = "##" + substr;
@@ -173,7 +183,7 @@ namespace BertJapaneseTokenizer
             return outputTokens;
         }
 
-        private IEnumerable<string> WhitespaceTokenize(string text)
+        private static IEnumerable<string> WhitespaceTokenize(string text)
         {
             // Implement or use an existing method to split the text on whitespace.
             // This is a placeholder for the actual implementation.
