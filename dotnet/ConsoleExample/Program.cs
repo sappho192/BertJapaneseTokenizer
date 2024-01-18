@@ -9,7 +9,7 @@ var sentence = "打ち合わせが終わった後にご飯を食べましょう�
 //var sentence = "ご飯を食べましょう。";
 //var sentence = "打ち合わせ";
 
-int[] tokenIds = tokenizer.EncodePlus(sentence);
+(var tokenIds, var attentionMask) = tokenizer.EncodePlus(sentence);
 
 Console.WriteLine($"Sentence: {sentence}");
 Console.WriteLine($"Token IDs: {string.Join(", ", tokenIds)}");

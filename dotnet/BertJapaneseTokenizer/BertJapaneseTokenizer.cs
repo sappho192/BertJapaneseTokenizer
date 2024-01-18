@@ -44,17 +44,23 @@ namespace BertJapaneseTokenizer
             tagger = MeCabTagger.Create(parameter);
         }
 
-        public int[] EncodePlus(string sentence, bool addSpecialTokens = true)
+        public (int[], int[]) EncodePlus(string sentence, bool addSpecialTokens = true)
         {
-            int[] result = [];
+            int[] inputIds = [];
 
             sentence = doNormalize(sentence);
             string[] tokens = doWordTokenize(sentence);
             string[] splitTokens = doSubwordTokenize(tokens);
-            result = doConvertTokensToIds(splitTokens);
-            result = appendSpecialTokens(result);
+            inputIds = doConvertTokensToIds(splitTokens);
+            inputIds = appendSpecialTokens(inputIds);
 
-            return result;
+            int[] attentionMask = new int[inputIds.Length];
+            for (int i = 0; i < attentionMask.Length; i++)
+            {
+                attentionMask[i] = 1;
+            }
+
+            return (inputIds, attentionMask);
         }
 
         private int[] appendSpecialTokens(int[] result)
