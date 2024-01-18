@@ -29,11 +29,11 @@
             // Using HttpClient, save into a path {hubName}/vocab.txt, and return the path
             var client = new HttpClient();
             var response = await client.GetAsync(url);
-            // Create the directory if it doesn't exist
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 throw new Exception($"Cannot download vocab.txt from {url}");
             }
+            // Create the directory if it doesn't exist
             Directory.CreateDirectory(directory);
             using (var fileStream = File.Create(vocabPath))
             {
