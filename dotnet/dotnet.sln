@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BertJapaneseTokenizer", "BertJapaneseTokenizer\BertJapaneseTokenizer.csproj", "{4258BBFD-3F7A-464B-A70F-CE821FC4F969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleExample", "ConsoleExample\ConsoleExample.csproj", "{ABCF3213-440F-4AD5-B4DD-7DFEEB64B346}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4258BBFD-3F7A-464B-A70F-CE821FC4F969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4258BBFD-3F7A-464B-A70F-CE821FC4F969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4258BBFD-3F7A-464B-A70F-CE821FC4F969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4258BBFD-3F7A-464B-A70F-CE821FC4F969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCF3213-440F-4AD5-B4DD-7DFEEB64B346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCF3213-440F-4AD5-B4DD-7DFEEB64B346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCF3213-440F-4AD5-B4DD-7DFEEB64B346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCF3213-440F-4AD5-B4DD-7DFEEB64B346}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DADDA50A-C012-44B9-AE94-20492741AAC4}
+	EndGlobalSection
+EndGlobal
