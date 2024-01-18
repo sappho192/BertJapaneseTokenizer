@@ -1,2 +1,2 @@
 # BertJapaneseTokenizer
-Minimal Tokenizer implementation of BertJapanese(cl-tohoku/bert-base-japanese) in C#
+Minimal Tokenizer implementation of BertJapanese([cl-tohoku/bert-base-japanese](https://github.com/cl-tohoku/bert-japanese)) in C#
