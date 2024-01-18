@@ -55,18 +55,15 @@ namespace BertJapaneseTokenizer
             inputIds = doConvertTokensToIds(splitTokens);
             inputIds = appendSpecialTokens(inputIds);
 
-            int[] attentionMask = new int[inputIds.Length];
-            for (int i = 0; i < attentionMask.Length; i++)
-            {
-                attentionMask[i] = 1;
-            }
+            int[] attentionMask = Enumerable.Repeat(1, inputIds.Length).ToArray();
 
             return (inputIds, attentionMask);
         }
 
         private int[] appendSpecialTokens(int[] result)
         {
-            List<int> results = [];
+            // Initialize the list with the expected capacity to avoid resizing
+            List<int> results = new List<int>(result.Length + 2);
             results.Add(vocab["[CLS]"]);
             results.AddRange(result);
             results.Add(vocab["[SEP]"]);
