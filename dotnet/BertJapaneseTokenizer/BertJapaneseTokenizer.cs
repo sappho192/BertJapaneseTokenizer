@@ -107,7 +107,7 @@ namespace BertJapaneseTokenizer
 
             foreach (var token in tokens)
             {
-                var subTokens = WordPieceTokenize(token);
+                var subTokens = wordPieceTokenize(token);
                 result.AddRange(subTokens);
             }
 
@@ -143,10 +143,10 @@ namespace BertJapaneseTokenizer
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        private List<string> WordPieceTokenize(string text)
+        private List<string> wordPieceTokenize(string text)
         {
             List<string> outputTokens = [];
-            foreach (var token in WhitespaceTokenize(text))
+            foreach (var token in whitespaceTokenize(text))
             {
                 if (token.Length > maxInputCharsPerWord)
                 {
@@ -182,7 +182,7 @@ namespace BertJapaneseTokenizer
         }
 
 
-        private static IEnumerable<string> WhitespaceTokenize(string text)
+        private static IEnumerable<string> whitespaceTokenize(string text)
         {
             // Implement or use an existing method to split the text on whitespace.
             // This is a placeholder for the actual implementation.
