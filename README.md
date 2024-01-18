@@ -26,6 +26,9 @@ var sentence = "打ち合わせが終わった後にご飯を食べましょう�
 
 Console.WriteLine($"Sentence: {sentence}");
 Console.WriteLine($"Token IDs: {string.Join(", ", tokenIds)}");
+
+var decoded = tokenizer.Decode(tokenIds);
+Console.WriteLine($"Decoded: {decoded}");
 ```
 
 # To-do List
