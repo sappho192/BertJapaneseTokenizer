@@ -135,30 +135,22 @@ namespace BertJapaneseTokenizer
         private List<string> WordPieceTokenize(string text)
         {
             List<string> outputTokens = [];
-            // Assuming whitespace_tokenize is a method that splits the text into tokens.
             foreach (var token in WhitespaceTokenize(text))
             {
-                var chars = token.ToCharArray();
-                if (chars.Length > maxInputCharsPerWord)
+                if (token.Length > maxInputCharsPerWord)
                 {
                     outputTokens.Add(unkToken);
                     continue;
                 }
 
-                bool isBad = false;
                 int start = 0;
-                List<string> subTokens = [];
-                while (start < chars.Length)
+                while (start < token.Length)
                 {
-                    int end = chars.Length;
+                    int end = token.Length;
                     string curSubstr = null;
                     while (start < end)
                     {
-                        string substr = new(chars, start, end - start);
-                        if (start > 0)
-                        {
-                            substr = "##" + substr;
-                        }
+                        string substr = (start == 0) ? token[start..end] : "##" + token[start..end];
                         if (vocab.ContainsKey(substr))
                         {
                             curSubstr = substr;
@@ -168,24 +160,16 @@ namespace BertJapaneseTokenizer
                     }
                     if (curSubstr == null)
                     {
-                        isBad = true;
+                        outputTokens.Add(unkToken);
                         break;
                     }
-                    subTokens.Add(curSubstr);
+                    outputTokens.Add(curSubstr);
                     start = end;
-                }
-
-                if (isBad)
-                {
-                    outputTokens.Add(unkToken);
-                }
-                else
-                {
-                    outputTokens.AddRange(subTokens);
                 }
             }
             return outputTokens;
         }
+
 
         private static IEnumerable<string> WhitespaceTokenize(string text)
         {
