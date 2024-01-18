@@ -1,4 +1,5 @@
 ﻿using MeCab;
+using System.Text;
 
 namespace BertJapaneseTokenizer
 {
@@ -194,6 +195,29 @@ namespace BertJapaneseTokenizer
             // Implement or use an existing method to split the text on whitespace.
             // This is a placeholder for the actual implementation.
             return text.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public string Decode(int[] ids, bool skipSpecialTokens = true)
+        {
+            StringBuilder sb = new();
+            foreach (var id in ids)
+            {
+                if (skipSpecialTokens && (id < 14)) // 14 == <unused9>
+                {
+                    continue;
+                }
+                var token = vocab.FirstOrDefault(x => x.Value == id).Key;
+                if (token != null)
+                {
+                    // Remove ## from the beginning of the token
+                    if (token.StartsWith("##"))
+                    {
+                        token = token.Substring(2);
+                    }
+                    sb.Append(token);
+                }
+            }
+            return sb.ToString();
         }
     }
 }
