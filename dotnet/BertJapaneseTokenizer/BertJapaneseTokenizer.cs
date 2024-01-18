@@ -12,6 +12,13 @@ namespace BertJapaneseTokenizer
                 return vocab;
             }
         }
+        public Dictionary<int, string>? ReverseVocab
+        {
+            get
+            {
+                return reverseVocab;
+            }
+        }
         public MeCabTagger? Tagger
         {
             get
@@ -22,8 +29,10 @@ namespace BertJapaneseTokenizer
         public const string unkToken = "[UNK]";
 
         private readonly Dictionary<string, int> vocab = [];
+        private readonly Dictionary<int, string> reverseVocab;
         private readonly MeCabTagger? tagger;
         private const int maxInputCharsPerWord = 100;
+        private static readonly char[] separator = new[] { ' ', '\t', '\n', '\r' };
 
         private BertJapaneseTokenizer()
         { }
@@ -40,6 +49,8 @@ namespace BertJapaneseTokenizer
                     vocab[line] = id++;
                 }
             }
+            // Create a reverse lookup dictionary
+            reverseVocab = vocab.ToDictionary(pair => pair.Value, pair => pair.Key);
 
             var parameter = new MeCabParam(dictPath);
             tagger = MeCabTagger.Create(parameter);
@@ -175,7 +186,7 @@ namespace BertJapaneseTokenizer
         {
             // Implement or use an existing method to split the text on whitespace.
             // This is a placeholder for the actual implementation.
-            return text.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            return text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         }
 
         public string Decode(int[] ids, bool skipSpecialTokens = true)
@@ -183,14 +194,12 @@ namespace BertJapaneseTokenizer
             StringBuilder sb = new();
             foreach (var id in ids)
             {
-                if (skipSpecialTokens && (id < 14)) // 14 == <unused9>
+                if (skipSpecialTokens && (id < 14)) // Assuming 14 is the ID for [unused9]
                 {
                     continue;
                 }
-                var token = vocab.FirstOrDefault(x => x.Value == id).Key;
-                if (token != null)
+                if (reverseVocab.TryGetValue(id, out string token))
                 {
-                    // Remove ## from the beginning of the token
                     if (token.StartsWith("##"))
                     {
                         token = token.Substring(2);
