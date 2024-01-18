@@ -26,7 +26,11 @@ namespace BertJapaneseTokenizer
                 return tagger;
             }
         }
-        public const string unkToken = "[UNK]";
+        public const string TOKEN_PAD = "[PAD]";
+        public const string TOKEN_UNK = "[UNK]";
+        public const string TOKEN_CLS = "[CLS]";
+        public const string TOKEN_SEP = "[SEP]";
+        public const string TOKEN_MASK = "[MASK]";
 
         private readonly Dictionary<string, int> vocab = [];
         private readonly Dictionary<int, string> reverseVocab;
@@ -75,9 +79,9 @@ namespace BertJapaneseTokenizer
         {
             // Initialize the list with the expected capacity to avoid resizing
             List<int> results = new List<int>(result.Length + 2);
-            results.Add(vocab["[CLS]"]);
+            results.Add(vocab[TOKEN_CLS]);
             results.AddRange(result);
-            results.Add(vocab["[SEP]"]);
+            results.Add(vocab[TOKEN_SEP]);
             return results.ToArray();
         }
 
@@ -126,7 +130,7 @@ namespace BertJapaneseTokenizer
                 }
                 else
                 {
-                    results.Add(vocab["[UNK]"]);
+                    results.Add(vocab[TOKEN_UNK]);
                 }
             }
 
@@ -150,7 +154,7 @@ namespace BertJapaneseTokenizer
             {
                 if (token.Length > maxInputCharsPerWord)
                 {
-                    outputTokens.Add(unkToken);
+                    outputTokens.Add(TOKEN_UNK);
                     continue;
                 }
 
@@ -171,7 +175,7 @@ namespace BertJapaneseTokenizer
                     }
                     if (curSubstr == null)
                     {
-                        outputTokens.Add(unkToken);
+                        outputTokens.Add(TOKEN_UNK);
                         break;
                     }
                     outputTokens.Add(curSubstr);
