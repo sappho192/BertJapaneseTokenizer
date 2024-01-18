@@ -198,9 +198,14 @@ namespace BertJapaneseTokenizer
             StringBuilder sb = new();
             foreach (var id in ids)
             {
-                if (skipSpecialTokens && (id < 14)) // Assuming 14 is the ID for [unused9]
+                if (skipSpecialTokens)
                 {
-                    continue;
+                    if (id == vocab[TOKEN_CLS] || id == vocab[TOKEN_SEP] ||
+                    id == vocab[TOKEN_PAD] || id == vocab[TOKEN_MASK] ||
+                    id == vocab[TOKEN_UNK])
+                    {
+                        continue;
+                    }
                 }
                 if (reverseVocab.TryGetValue(id, out string token))
                 {
