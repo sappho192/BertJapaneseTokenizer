@@ -28,3 +28,6 @@ Console.WriteLine($"Sentence: {sentence}");
 Console.WriteLine($"Token IDs: {string.Join(", ", tokenIds)}");
 ```
 
+# To-do List
+- [ ] Implement Decode() method
+- [ ] Support BPE-type vocabulary (like `cl-tohoku/bert-base-japanese-char`)
