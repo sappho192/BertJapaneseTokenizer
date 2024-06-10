@@ -10,6 +10,13 @@
     <Version></Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Authors>sappho192</Authors>
+    <Description>Minimal Tokenizer implementation of BertJapanese(tohoku-nlp/bert-base-japanese) in C#</Description>
+    <Copyright>Copyright (c) Taein Kim(sappho192)</Copyright>
+    <PackageProjectUrl>https://github.com/sappho192/BertJapaneseTokenizer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sappho192/BertJapaneseTokenizer.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>tokenizer;bert;japanese</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,8 +25,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
