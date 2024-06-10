@@ -4,8 +4,8 @@
     <id>$id$</id>
     <version>$PackageVersion$</version>
     <title>BertJapaneseTokenizer</title>
-    <authors>Taein Kim</authors>
-    <owners>Taein Kim</owners>
+    <authors>sappho192</authors>
+    <owners>sappho192</owners>
     <description>Minimal Tokenizer implementation of BertJapanese(tohoku-nlp/bert-base-japanese) in C#</description>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
@@ -13,7 +13,7 @@
     <repository type="git" url="https://github.com/sappho192/BertJapaneseTokenizer.git" branch="$RepositoryBranch$" commit="$RepositoryCommit$" />
     <releaseNotes>$PackageReleaseNotes$</releaseNotes>
     <projectUrl>https://github.com/sappho192/BertJapaneseTokenizer</projectUrl>
-    <copyright>Copyright © Taein Kim</copyright>
+    <copyright>Copyright (c) Taein Kim(sappho192)</copyright>
     <tags>tokenizer;bert;japanese</tags>
   </metadata>
 </package>
