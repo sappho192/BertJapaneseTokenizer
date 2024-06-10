@@ -68,14 +68,14 @@ namespace BertJapaneseTokenizer
             string[] tokens = doWordTokenize(sentence);
             string[] splitTokens = doSubwordTokenize(tokens);
             inputIds = doConvertTokensToIds(splitTokens);
-            inputIds = appendSpecialTokens(inputIds);
+            inputIds = appendDefaultSpecialTokens(inputIds);
 
             int[] attentionMask = Enumerable.Repeat(1, inputIds.Length).ToArray();
 
             return (inputIds, attentionMask);
         }
 
-        private int[] appendSpecialTokens(int[] result)
+        private int[] appendDefaultSpecialTokens(int[] result)
         {
             // Initialize the list with the expected capacity to avoid resizing
             List<int> results = new List<int>(result.Length + 2);
