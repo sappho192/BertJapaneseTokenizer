@@ -4,10 +4,18 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>BertJapaneseTokenizer</Title>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Version></Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MeCab.DotNet" Version="1.2.0" />
+    <PackageReference Include="RelaxVersioner" Version="3.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
