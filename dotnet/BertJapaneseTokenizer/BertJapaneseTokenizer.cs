@@ -32,7 +32,7 @@ namespace BertJapaneseTokenizer
         public const string TOKEN_SEP = "[SEP]";
         public const string TOKEN_MASK = "[MASK]";
 
-        private readonly Dictionary<string, int> vocab = [];
+        private readonly Dictionary<string, int> vocab = new Dictionary<string, int>();
         private readonly Dictionary<int, string> reverseVocab;
         private readonly MeCabTagger? tagger;
         private const int maxInputCharsPerWord = 100;
@@ -62,7 +62,7 @@ namespace BertJapaneseTokenizer
 
         public (int[], int[]) EncodePlus(string sentence, bool addSpecialTokens = true)
         {
-            int[] inputIds = [];
+            int[] inputIds;
 
             sentence = doNormalize(sentence);
             string[] tokens = doWordTokenize(sentence);
@@ -92,7 +92,7 @@ namespace BertJapaneseTokenizer
 
         private string[] doWordTokenize(string sentence)
         {
-            List<string> result = [];
+            List<string> result = new List<string>();
             var tokens = Tagger.ParseToNodes(sentence);
 
             foreach (var node in tokens)
@@ -107,7 +107,7 @@ namespace BertJapaneseTokenizer
 
         private string[] doSubwordTokenize(string[] tokens)
         {
-            List<string> result = [];
+            List<string> result = new List<string>();
 
             foreach (var token in tokens)
             {
@@ -120,7 +120,7 @@ namespace BertJapaneseTokenizer
 
         private int[] doConvertTokensToIds(string[] splitTokens)
         {
-            List<int> results = [];
+            List<int> results = new List<int>();
 
             foreach (var token in splitTokens)
             {
@@ -149,7 +149,7 @@ namespace BertJapaneseTokenizer
         /// <returns></returns>
         private List<string> wordPieceTokenize(string text)
         {
-            List<string> outputTokens = [];
+            List<string> outputTokens = new List<string>();
             foreach (var token in whitespaceTokenize(text))
             {
                 if (token.Length > maxInputCharsPerWord)
