@@ -16,6 +16,9 @@
     <copyright>Copyright (c) Taein Kim(sappho192)</copyright>
     <tags>tokenizer;bert;japanese</tags>
     <readme>docs\README.md</readme>
+    <dependencies>
+      <dependency id="MeCab.DotNet" version="1.2.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="..\..\README.md" target="docs\" />
