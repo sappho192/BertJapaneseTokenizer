@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -17,6 +17,7 @@
     <RepositoryUrl>https://github.com/sappho192/BertJapaneseTokenizer.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>tokenizer;bert;japanese</PackageTags>
+    <NuspecFile>BertJapaneseTokenizer.nuspec</NuspecFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,8 +26,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

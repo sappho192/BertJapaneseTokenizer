@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>BertJapaneseTokenizer</id>
     <version>$PackageVersion$</version>
     <title>BertJapaneseTokenizer</title>
     <authors>sappho192</authors>
@@ -15,5 +15,10 @@
     <projectUrl>https://github.com/sappho192/BertJapaneseTokenizer</projectUrl>
     <copyright>Copyright (c) Taein Kim(sappho192)</copyright>
     <tags>tokenizer;bert;japanese</tags>
+    <readme>docs\README.md</readme>
   </metadata>
+  <files>
+    <file src="..\..\README.md" target="docs\" />
+    <file src="bin\$Configuration$\net6.0\**\*.*" target="lib/net6.0" />
+  </files>
 </package>
