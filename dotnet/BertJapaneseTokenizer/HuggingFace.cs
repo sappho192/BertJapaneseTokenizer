@@ -5,20 +5,33 @@
         /// <summary>
         /// <para>Download the vocab.txt file in the hub.</para>
         /// <para>Example of supported hub: cl-tohoku/bert-base-japanese, cl-tohoku/bert-large-japanese-v2, etc.</para>
+        /// <para>If you specify the destination directory, vocab.txt will be saved in like: destDir/bert-base-japanese-v2/vocab.txt</para>
         /// </summary>
         /// <param name="hubName"></param>
+        /// <param name="destinationDirectory"></param>
+        /// <param name="overwrite"></param>
         /// <returns></returns>
-        public static async Task<string> GetVocabFromHub(string hubName)
+        public static async Task<string> GetVocabFromHub(string hubName,
+            string destinationDirectory = "", bool overwrite = true)
         {
             // Example of hubName: cl-tohoku/bert-large-japanese
             // We need to separate the hubName, delimiter is '/'
             // And then concatenate the path using Path.Combine
             string[] sepPath = hubName.Split('/');
             string directory = Path.Combine(sepPath);
-            string vocabPath = Path.Combine(directory, "vocab.txt");
+            string vocabPath;
+            if (string.IsNullOrEmpty(destinationDirectory))
+            {
+                vocabPath = Path.Combine(directory, "vocab.txt");
+            }
+            else
+            {
+                directory = Path.Combine(destinationDirectory, sepPath[1]);
+                vocabPath = Path.Combine(directory, "vocab.txt");
+            }
             // Check if the vocab.txt file exists in the directory
             // Return path if it exists
-            if (File.Exists(vocabPath))
+            if (File.Exists(vocabPath) && !overwrite)
             {
                 return vocabPath;
             }
